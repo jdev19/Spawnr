@@ -15,7 +15,14 @@ public class SpawnPlayerListener extends PlayerListener {
 	
 	public void onPlayerJoin(PlayerEvent event) {
 		Player player = event.getPlayer();
-		if (!Spawnr.users.keyExists(player.getName())) {
+		if (!Spawnr.properties.keyExists("x")) {
+			Location oLoc = player.getWorld().getSpawnLocation();
+			player.teleportTo(oLoc);
+			if(player.isOp()) {
+				player.sendMessage("Spawnr point needs to be set.");
+			}
+		}
+		else if (!Spawnr.users.keyExists(player.getName())) {
 			Location loc = player.getLocation();
 			loc.setX(Spawnr.properties.getDouble("x"));
 			loc.setY(Spawnr.properties.getDouble("y"));
@@ -37,8 +44,10 @@ public class SpawnPlayerListener extends PlayerListener {
 			event.setRespawnLocation(loc);
 		}
 		else {
+			Location oLoc = player.getWorld().getSpawnLocation();
+			player.teleportTo(oLoc);
 			if(player.isOp()){
-				player.sendMessage("Spawnpoint not set.");
+				player.sendMessage("Spawnr point needs to be set.");
 			}
 		}
 	}
