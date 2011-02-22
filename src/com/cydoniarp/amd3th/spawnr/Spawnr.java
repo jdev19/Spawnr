@@ -17,7 +17,7 @@ public class Spawnr extends JavaPlugin {
 	private static Logger log = Logger.getLogger("Minecraft");
 	
 	public static Property properties;
-	public static Property users = new Property("plugins/Spawnr/users.spawn");
+	public static Property users;
 	
 	public void onEnable() {
 		PluginManager pm = getServer().getPluginManager();
@@ -28,7 +28,7 @@ public class Spawnr extends JavaPlugin {
 		if (!(new File("plugins/Spawnr").isDirectory())) {
 			(new File("plugins/Spawnr")).mkdir();
 		}
-		properties = new Property("plugins/Spawnr/conf.spawn");
+		users = new Property("plugins/Spawnr/users.spawn");
 	}
 	
 	public void onDisable() {

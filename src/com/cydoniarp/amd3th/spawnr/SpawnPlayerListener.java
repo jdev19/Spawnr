@@ -15,6 +15,8 @@ public class SpawnPlayerListener extends PlayerListener {
 	
 	public void onPlayerJoin(PlayerEvent event) {
 		Player player = event.getPlayer();
+		
+		Spawnr.properties = new Property("plugins/Spawnr/"+player.getWorld().getId()+".spawn");
 		if (!Spawnr.properties.keyExists("x")) {
 			Location oLoc = player.getWorld().getSpawnLocation();
 			player.teleportTo(oLoc);
@@ -35,6 +37,7 @@ public class SpawnPlayerListener extends PlayerListener {
 	
 	public void onPlayerRespawn(PlayerRespawnEvent event) {
 		Player player = event.getPlayer();
+		Spawnr.properties = new Property("plugins/Spawnr/"+player.getWorld().getId()+".spawn");
 		if (Spawnr.properties.keyExists("x")){
 			Location loc = player.getLocation();
 			loc.setX(Spawnr.properties.getDouble("x"));
