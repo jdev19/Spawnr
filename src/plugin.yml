@@ -6,11 +6,7 @@ description: Sets player initial spawn and respawn location to exact coordinates
 commands:
   spawnr:
       description: Sets spawn location coords.
-      usage: |
-             Incorrect usage of command /<command>. Example
-             /<command> - Sets spawn point.
+      usage: /<command> 
   spawntp:
       description: Teleports player to location coords.
-      usage: |
-             Incorrect usage of command /<command>. Example
-             /<command> - Teleports to spawn point.
+      usage: /<command>
