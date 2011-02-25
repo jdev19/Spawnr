@@ -46,10 +46,26 @@ public class Spawnr extends JavaPlugin {
 					properties.setDouble("y", loc.getY());
 					properties.setDouble("z", loc.getZ());
 					properties.setFloat("yaw", loc.getYaw());
-					((Player)sender).sendMessage("Spawnr point set. :)");
+					((Player)sender).sendMessage("Spawnr point set.");
 				}
 				return true;
 			}
+			if (Spawnr.properties.keyExists("x")) {
+				if (cmdName.equalsIgnoreCase("spawntp")){
+					Location loc = null;
+					loc.setX(Spawnr.properties.getDouble("x"));
+					loc.setY(Spawnr.properties.getDouble("y"));
+					loc.setZ(Spawnr.properties.getDouble("z"));
+					loc.setYaw(Spawnr.properties.getFloat("yaw"));
+					((Player)sender).teleportTo(loc);
+					((Player)sender).sendMessage("Teleported!");
+					return true;
+				} else {
+					((Player)sender).sendMessage("No spawn point to teleport to. Tell an OP");
+					return true;
+				}
+			}
+			return false;
 		}
 		return false;
 	}
