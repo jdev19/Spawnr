@@ -64,6 +64,7 @@ public class Spawnr extends JavaPlugin {
 				}
 			} else {
 				((Player)sender).sendMessage("No point to teleport to.");
+				return true;
 			}
 		}
 		return false;
