@@ -24,21 +24,21 @@ public class SpawnPlayerListener extends PlayerListener {
 				player.sendMessage("Spawnr point needs to be set.");
 			}
 		}
-		else if (!Spawnr.users.keyExists(player.getName())) {
+		else if (!Spawnr.properties.keyExists(player.getName())) {
 			Location loc = player.getLocation();
 			loc.setX(Spawnr.properties.getDouble("x"));
 			loc.setY(Spawnr.properties.getDouble("y"));
 			loc.setZ(Spawnr.properties.getDouble("z"));
 			loc.setYaw(Spawnr.properties.getFloat("yaw"));
 			player.teleportTo(loc);
-			Spawnr.users.setBoolean(player.getName(), true);
+			Spawnr.properties.setBoolean(player.getName(), true);
 		}
 	}
 	
 	public void onPlayerRespawn(PlayerRespawnEvent event) {
 		Player player = event.getPlayer();
 		Spawnr.properties = new Property("plugins/Spawnr/"+player.getWorld().getId()+".spawn");
-		if (Spawnr.properties.keyExists("x")){
+		if (Spawnr.properties.keyExists("y")){
 			Location loc = player.getLocation();
 			loc.setX(Spawnr.properties.getDouble("x"));
 			loc.setY(Spawnr.properties.getDouble("y"));

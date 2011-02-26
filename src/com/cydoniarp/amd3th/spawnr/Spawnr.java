@@ -17,7 +17,6 @@ public class Spawnr extends JavaPlugin {
 	private static Logger log = Logger.getLogger("Minecraft");
 	
 	public static Property properties;
-	public static Property users;
 	
 	public void onEnable() {
 		PluginManager pm = getServer().getPluginManager();
@@ -28,7 +27,6 @@ public class Spawnr extends JavaPlugin {
 		if (!(new File("plugins/Spawnr").isDirectory())) {
 			(new File("plugins/Spawnr")).mkdir();
 		}
-		users = new Property("plugins/Spawnr/users.spawn");
 	}
 	
 	public void onDisable() {
@@ -50,8 +48,11 @@ public class Spawnr extends JavaPlugin {
 					return true;
 				}
 				
+			} else {
+				((Player)sender).sendMessage("You are not OP");
+				return true;
 			}
-			if (Spawnr.properties.keyExists("x")) {
+			if (Spawnr.properties.keyExists("y")) {
 				if (cmdName.equalsIgnoreCase("spawntp")){
 					Location locS = ((Player)sender).getLocation();
 					locS.setX(properties.getDouble("x"));
