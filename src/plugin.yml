@@ -1,6 +1,6 @@
 name: Spawnr
 main: com.cydoniarp.amd3th.spawnr.Spawnr
-version: 1.3
+version: 1.3b
 author: amd3th
 description: Sets player initial spawn and respawn location to exact coordinates that OP sets.
 commands:

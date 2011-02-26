@@ -52,7 +52,7 @@ public class Spawnr extends JavaPlugin {
 				((Player)sender).sendMessage("You are not OP");
 				return true;
 			}
-			if (Spawnr.properties.keyExists("y")) {
+			if (Spawnr.properties.keyExists("x")) {
 				if (cmdName.equalsIgnoreCase("spawntp")){
 					Location locS = ((Player)sender).getLocation();
 					locS.setX(properties.getDouble("x"));
