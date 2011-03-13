@@ -14,10 +14,12 @@ import java.util.logging.Logger;
 
 public final class Property {
 	private static final Logger log = Logger.getLogger("Minecraft");
+	protected Spawnr plugin;
 	private Properties properties;
 	private String fileName;
 
-	public Property(String fileName) {
+	public Property(String fileName, Spawnr plugin) {
+		this.plugin = plugin;
 		this.fileName = fileName;
 		this.properties = new Properties();
 		File file = new File(fileName);
@@ -31,17 +33,21 @@ public final class Property {
 
 	public void load() {
 		try {
-			this.properties.load(new FileInputStream(this.fileName));
+			FileInputStream inFile = new FileInputStream(this.fileName);
+			this.properties.load(inFile);
+			inFile.close();
 		} catch (IOException ex) {
-			log.log(Level.SEVERE, "[Spawnr]: Unable to load "+this.fileName, ex);
+			log.log(Level.SEVERE, "[" + plugin.pName +"]: Unable to load "+this.fileName, ex);
 		}
 	}
 
 	public void save() {
 		try {
-			this.properties.store(new FileOutputStream(this.fileName), "Minecraft Properties File");
+			FileOutputStream outFile = new FileOutputStream(this.fileName);
+			this.properties.store(outFile, "Minecraft Properties File");
+			outFile.close();
 		} catch (IOException ex) {
-			log.log(Level.SEVERE, "[Spawnr]: Unable to save "+this.fileName, ex);
+			log.log(Level.SEVERE, "[" + plugin.pName + "]: Unable to save "+this.fileName, ex);
 		}
 	}
 
@@ -65,6 +71,20 @@ public final class Property {
 
 	public boolean keyExists(String key) {
 		return this.properties.containsKey(key);
+	}
+	
+	// REMOVE
+	public void remove(String key) {
+		this.properties.remove(key);
+		save();
+	}
+	
+	// IS EMPTY
+	public boolean isEmpty() {
+		if(this.properties.isEmpty()){
+			return true;
+		}
+		return false;
 	}
 
 	// STRING
