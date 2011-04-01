@@ -28,9 +28,7 @@ public class SpawnPlayerListener extends PlayerListener {
 		}
 		Spawnr.world = new Property(plugin.pf + "/" + worldId + "/world.spawn", plugin);
 		Spawnr.users = new Property(plugin.pf + "/" + worldId + "/users.spawn", plugin);
-		Spawnr.userspawnprop = new Property(plugin.pf + "/" + worldId + "/" + plName + "/pl.spawn", plugin);
-		Spawnr.userprop = new Property(plugin.pf+"/"+worldId+"/"+plName+"/home.spawn", plugin);
-		
+		Spawnr.userprop = new Property(plugin.pf + "/" + worldId + "/" + plName + "/pl.spawn", plugin);
 		if ((Spawnr.world.keyExists("x")) && (!Spawnr.users.keyExists(plName))){
 			Location loc = player.getLocation();
 			loc.setX(Spawnr.world.getDouble("x"));
@@ -49,10 +47,10 @@ public class SpawnPlayerListener extends PlayerListener {
 		
 		if(Spawnr.users.keyExists(player.getName())){
 			Location uLoc = player.getLocation();
-			uLoc.setX(Spawnr.userspawnprop.getDouble("x"));
-			uLoc.setY(Spawnr.userspawnprop.getDouble("y"));
-			uLoc.setZ(Spawnr.userspawnprop.getDouble("z"));
-			uLoc.setYaw(Spawnr.userspawnprop.getFloat("yaw"));
+			uLoc.setX(Spawnr.userprop.getDouble("x"));
+			uLoc.setY(Spawnr.userprop.getDouble("y"));
+			uLoc.setZ(Spawnr.userprop.getDouble("z"));
+			uLoc.setYaw(Spawnr.userprop.getFloat("yaw"));
 			player.teleport(uLoc);
 		}else{
 			Location loc = player.getLocation();
@@ -87,9 +85,9 @@ public class SpawnPlayerListener extends PlayerListener {
 	public void onPlayerQuit(PlayerQuitEvent event){
 		Player player = event.getPlayer();
 		Location pLoc = player.getLocation();
-		Spawnr.userspawnprop.setDouble("x", pLoc.getX());
-		Spawnr.userspawnprop.setDouble("y", pLoc.getY());
-		Spawnr.userspawnprop.setDouble("z", pLoc.getZ());
-		Spawnr.userspawnprop.setFloat("yaw", pLoc.getYaw());
+		Spawnr.userprop.setDouble("x", pLoc.getX());
+		Spawnr.userprop.setDouble("y", pLoc.getY());
+		Spawnr.userprop.setDouble("z", pLoc.getZ());
+		Spawnr.userprop.setFloat("yaw", pLoc.getYaw());
 	}
 }

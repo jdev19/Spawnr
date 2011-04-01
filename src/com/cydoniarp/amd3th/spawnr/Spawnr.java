@@ -24,7 +24,6 @@ public class Spawnr extends JavaPlugin {
 	public static Property world;
 	public static Property users = null;
 	public static Property userprop;
-	public static Property userspawnprop;
 	private Property config = null;
 	public long worldID;
 	public String pf = null;
@@ -105,58 +104,6 @@ public class Spawnr extends JavaPlugin {
 										//COMMAND FUNCTION
 										Spawnr.this.worker.globalSet(sender);
 										return true;
-									}else{
-										((Player)sender).sendMessage(ChatColor.RED+"You don't have permission to use that command.");
-										return true;
-									}
-								}
-							}
-							//SET HOME COMMAND
-							if (args[0].equalsIgnoreCase("sethome")){
-								if(perm != null){
-									if(Spawnr.Permissions.has(((Player)sender), "spawnr.sethome")){
-										//COMMAND FUNCTION
-										Spawnr.this.worker.setHome(sender);
-										return true;
-									}else{
-										((Player)sender).sendMessage(ChatColor.RED+"You don't have permission to use that command.");
-										return true;
-									}
-								}else{
-									if(((Player)sender).isOp() || (!Spawnr.this.config.getBoolean("OPonlyHomes"))){
-										//COMMAND FUNCTION
-										Spawnr.this.worker.setHome(sender);
-										return true;
-									}else{
-										((Player)sender).sendMessage(ChatColor.RED+"You don't have permission to use that command.");
-										return true;
-									}
-								}
-							}
-							//TP HOME COMMAND
-							if (args[0].equalsIgnoreCase("home")){
-								if(perm != null){
-									if(Spawnr.Permissions.has(((Player)sender), "spawnr.home")){
-										if(Spawnr.userprop.keyExists("x")){
-											Spawnr.this.worker.tpHome(sender);
-											return true;
-										}else{
-											((Player)sender).sendMessage(ChatColor.RED+"You don't have a home.");
-											return true;
-										}
-									}else{
-										((Player)sender).sendMessage(ChatColor.RED+"You don't have permission to use that command.");
-										return true;
-									}
-								}else{
-									if(((Player)sender).isOp() || (!Spawnr.this.config.getBoolean("OPonlyHomes"))){
-										if(Spawnr.userprop.keyExists("x")){
-											Spawnr.this.worker.tpHome(sender);
-											return true;
-										}else{
-											((Player)sender).sendMessage(ChatColor.RED+"You don't have a home.");
-											return true;
-										}
 									}else{
 										((Player)sender).sendMessage(ChatColor.RED+"You don't have permission to use that command.");
 										return true;

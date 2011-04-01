@@ -29,23 +29,4 @@ public class sCom {
 		((Player)sender).teleport(locS);
 		((Player)sender).sendMessage("Teleported!");
 	}
-
-	public void setHome(CommandSender sender){
-		Location pLoc = ((Player)sender).getLocation();
-		Spawnr.userprop.setDouble("x", pLoc.getX());
-		Spawnr.userprop.setDouble("y", pLoc.getY());
-		Spawnr.userprop.setDouble("z", pLoc.getZ());
-		Spawnr.userprop.setFloat("yaw", pLoc.getYaw());
-		((Player)sender).sendMessage("Player Home set.");
-	}
-
-	public void tpHome(CommandSender sender){
-		Location locT = ((Player)sender).getLocation();
-		locT.setX(Spawnr.userprop.getDouble("x"));
-		locT.setY(Spawnr.userprop.getDouble("y"));
-		locT.setZ(Spawnr.userprop.getDouble("z"));
-		locT.setYaw(Spawnr.userprop.getFloat("yaw"));
-		((Player)sender).teleport(locT);
-		((Player)sender).sendMessage("Teleported Home.");
-	}
 }
